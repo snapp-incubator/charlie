@@ -1,4 +1,4 @@
-package fwfag
+package main
 
 import (
 	"fmt"

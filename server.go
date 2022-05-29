@@ -1,4 +1,4 @@
-package fwfag
+package main
 
 import (
 	"flag"
@@ -11,7 +11,7 @@ var (
 	dir     = flag.String("dir", ".", "directory to serve")
 )
 
-func Run() {
+func main() {
 	flag.Parse()
 
 	log.Printf("listening on %q...", *address)
