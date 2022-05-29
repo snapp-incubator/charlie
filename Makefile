@@ -1,2 +1,2 @@
 compile:
-	GOOS=js GOARCH=wasm go build -o lib.wasm main.go
+	GOOS=js GOARCH=wasm go build -o lib/lib.wasm main.go
