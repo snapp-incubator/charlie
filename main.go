@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	fmt.Println("nvim")
+	fmt.Println("vim")
 }
