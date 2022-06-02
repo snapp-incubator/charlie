@@ -8,6 +8,8 @@ import (
 
 type AboutComponent struct{}
 
+var About AboutComponent
+
 func init() {
 	functions.Register("do", Do)
 }
