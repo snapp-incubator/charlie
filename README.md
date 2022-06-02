@@ -30,3 +30,17 @@ func Register(name string, function func(i []js.Value)) {
 	js.Global().Set(name, function)
 }
 ```
+
+## Components
+React tends to feature classes that feature 
+_render()_ functions which return the HTML/JSX/whatever
+code you wish to render for said component. 
+
+Our components will do the same:
+```go
+package components
+
+type Component interface {
+	Render() string
+}
+```

@@ -2,6 +2,6 @@ package functions
 
 import "syscall/js"
 
-func Register(name string, function func(i []js.Value)) {
+func Register(name string, function func(value js.Value, i []js.Value) interface{}) {
 	js.Global().Set(name, function)
 }

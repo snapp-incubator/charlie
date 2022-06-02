@@ -3,16 +3,16 @@ package components
 import (
 	"syscall/js"
 
-	oak "github.com/elliotforbes/go-webassembly-framework"
+	"github.com/amirhnajafiz/fwfag/internal/functions"
 )
 
 type AboutComponent struct{}
 
 func init() {
-	oak.RegisterFunction("do", Do)
+	functions.Register("do", Do)
 }
 
-func Do(this js.Value, inputs []js.Value) interface{} {
+func Do(_ js.Value, _ []js.Value) interface{} {
 	println("Nice")
 
 	return nil
