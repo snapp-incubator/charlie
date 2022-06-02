@@ -44,3 +44,21 @@ type Component interface {
 	Render() string
 }
 ```
+
+If you want to register functions for our components, just use
+the register method in our function package:
+```go
+package components
+
+import "github.com/amirhnajafiz/fwfag/internal/functions"
+
+func init() {
+	functions.Register("do", Do)
+}
+
+func Do(_ js.Value, _ []js.Value) interface{} {
+	println("Nice func")
+
+	return nil
+}
+```
