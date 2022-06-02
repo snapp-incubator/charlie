@@ -62,3 +62,13 @@ func Do(_ js.Value, _ []js.Value) interface{} {
 	return nil
 }
 ```
+
+## Router
+We’ll want to map string paths to components, 
+we won't do any URL checking, we’ll just keep everything in memory for 
+now to keep things simple:
+```go
+type Router struct {
+	Routes map[string]components.Component
+}
+```
