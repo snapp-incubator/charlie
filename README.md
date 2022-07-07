@@ -1,6 +1,11 @@
-# FWFAG
+# Assembled
 
-Writing a Frontend Web Framework with WebAssembly And Go.
+<p align="center">
+	<img src="assets/logo.png" width="600" alt="logo" /><br />
+	Writing a Frontend Web Framework with WebAssembly And Go.
+</p>
+
+---
 
 In this project I build the base of an incredibly simple frontend 
 framework written in Go that compiles into WebAssembly. 
