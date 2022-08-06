@@ -1,7 +1,7 @@
 # Assembled
 
 <p align="center">
-	<img src="logo.jpeg" width="600" alt="logo" /><br />
+	<img src=".github/readme/logo.jpeg" width="600" alt="logo" /><br />
 	Writing a Frontend Web Framework with WebAssembly And Go.
 </p>
 
