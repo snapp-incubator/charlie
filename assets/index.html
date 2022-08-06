@@ -10,5 +10,19 @@
         });
     </script>
 </head>
-<body></body>
+<body>
+    <label for="jsoninput">Input</label><br />
+    <textarea id="jsoninput" name="jsoninput" cols="80" rows="20"></textarea><br />
+    <input id="button" type="submit" name="button" value="pretty json" onclick="json(jsoninput.value)" /><br />
+    <label for="jsonoutput">Output</label><br />
+    <textarea id="jsonoutput" name="jsonoutput" cols="80" rows="20">
+
+    </textarea>
+</body>
+<script>
+    const json = function (input) {
+        const obj = document.getElementById("jsonoutput")
+        obj.value = formatJSON(input)
+    };
+</script>
 </html>
