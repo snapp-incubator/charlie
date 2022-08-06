@@ -1,7 +1,7 @@
 # Assembled
 
 <p align="center">
-	<img src=".github/readme/logo.jpeg" width="600" alt="logo" /><br />
+	<img src=".github/readme/logo.jpeg" width="500" alt="logo" /><br />
 	Writing a Frontend Web Framework with WebAssembly And Go.
 </p>
 
@@ -10,70 +10,69 @@
 In this project I build the base of an incredibly simple frontend 
 framework written in Go that compiles into WebAssembly. 
 
-At a minimum, this will include the following features:
-- Function Registration
-- Components
-- Routing
+### Wasm and JS
+JavaScript has been the only programming language that the browser 
+understands. JavaScript has stood the test of time and it has been 
+able to deliver the performance needed by most web applications. 
+But when it comes to 3D games, VR, AR, and image editing apps, 
+JavaScript is not quite up to the mark since it is interpreted. 
+Although JavaScript engines such as Gecko and V8 have Just in Time 
+compilation capabilities, JavaScript is not able to provide the high 
+performance required by modern web applications.
 
-## Static
-Our entrypoint is the main script which
-will generate our goland framework from lib directory.
+WebAssembly(also known as wasm) is meant to solve this problem. 
+WebAssembly is a virtual assembly language for the browser. 
+When we say virtual, it means that it cannot be run natively 
+on the underlying hardware. Since the browser can be running on any 
+architecture, it is not possible for the browser to run WebAssembly 
+directly on the underlying hardware. But this highly optimized virtual 
+assembly format can be processed much quicker than vanilla JavaScript 
+by modern browsers since it is compiled and is more close to the 
+hardware architecture than JavaScript. The following figure shows 
+where WebAssembly stands in the stack when compared to Javascript. 
+It is closer to the Hardware than JavaScript.
 
-## lib
-Lib will be our framework output file that
-the entrypoint will get and build the framework.
+### Project
+We will create a simple application that is used to format JSON. 
+If a JSON without any formatting is passed as input, 
+it will be formatted and printed.
 
-## Functions
-To register our functions, we use 
-javascript syscall in golang.
-```go
-import (
-	"syscall/js"
-)
+#### Example
+Input:
+```json
+{"website":"golangbot.com", "tutorials": {"string":"https://golangbot.com/strings/", "maps":"https://golangbot.com/maps/", "goroutine":"https://golangbot.com/goroutines/", "channels":"https://golangbot.com/channels/"}}
+```
 
-func Register(name string, function func(i []js.Value)) {
-	js.Global().Set(name, function)
+Output:
+```json
+{
+  "tutorials": {
+    "channels": "https://golangbot.com/channels/",
+    "goroutine": "https://golangbot.com/goroutines/",
+    "maps": "https://golangbot.com/maps/",
+    "string": "https://golangbot.com/strings/"
+  },
+  "website": "golangbot.com"
 }
 ```
 
-## Components
-React tends to feature classes that feature 
-_render()_ functions which return the HTML/JSX/whatever
-code you wish to render for said component. 
-
-Our components will do the same:
-```go
-package components
-
-type Component interface {
-	Render() string
-}
+### Structure
+```shell
+assembled
+    ├── assets
+        └── index.html
+        └── json.wasm
+        └── wasm_exec.js
+    └── cmd
+        ├── server
+          └── main.go
+        └── wasm
+          └── main.go
 ```
 
-If you want to register functions for our components, just use
-the register method in our function package:
-```go
-package components
-
-import "github.com/amirhnajafiz/fwfag/internal/functions"
-
-func init() {
-	functions.Register("do", Do)
-}
-
-func Do(_ js.Value, _ []js.Value) interface{} {
-	println("Nice func")
-
-	return nil
-}
+### How to run?
+```shell
+go run ./cmd/server/main.go
 ```
 
-## Router
-We’ll want to map string paths to components, 
-we won't do any URL checking, we’ll just keep everything in memory for 
-now to keep things simple:
-```go
-type Router struct {
-	Routes map[string]components.Component
-}
-```
+Checkout **localhost:9090**.
