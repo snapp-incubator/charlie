@@ -3,7 +3,7 @@ package router
 import (
 	"syscall/js"
 
-	"github.com/amirhnajafiz/fwfag/internal/components"
+	"github.com/amirhnajafiz/assembled/internal/components"
 )
 
 type Router struct {

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/amirhnajafiz/fwfag/internal/components"
-	"github.com/amirhnajafiz/fwfag/internal/router"
+	"github.com/amirhnajafiz/assembled/internal/components"
+	"github.com/amirhnajafiz/assembled/internal/router"
 )
 
 func main() {

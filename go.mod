@@ -1,3 +1,3 @@
-module github.com/amirhnajafiz/fwfag
+module assembled
 
 go 1.18

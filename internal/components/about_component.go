@@ -3,7 +3,7 @@ package components
 import (
 	"syscall/js"
 
-	"github.com/amirhnajafiz/fwfag/internal/functions"
+	"github.com/amirhnajafiz/assembled/internal/functions"
 )
 
 type AboutComponent struct{}
