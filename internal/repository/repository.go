@@ -1,6 +1,7 @@
 package repository
 
 type Repository struct {
-	User   UserRepository
-	Submit SubmitRepository
+	User     UserRepository
+	Question QuestionRepository
+	Submit   SubmitRepository
 }
