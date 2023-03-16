@@ -12,5 +12,5 @@ type ClassRepository interface {
 	GetAll() ([]*model.Class, error)
 	AddUser(userClass relations.UserClass) error
 	RemoveUser(userClass relations.UserClass) error
-	GetUsers(classID uint) ([]*model.User, error)
+	GetClassUsers(classID uint) ([]*model.User, error)
 }
