@@ -1,5 +1,6 @@
 package enum
 
 type (
-	Role int
+	Role   int
+	Status int
 )
