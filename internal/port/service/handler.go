@@ -10,6 +10,14 @@ type Handler struct {
 	Repository repository.Repository
 }
 
+func (h *Handler) GetAllUsers(ctx *fiber.Ctx) error {
+	return nil
+}
+
+func (h *Handler) UpdateUser(ctx *fiber.Ctx) error {
+	return nil
+}
+
 func (h *Handler) CreateClass(ctx *fiber.Ctx) error {
 	return nil
 }
@@ -19,6 +27,10 @@ func (h *Handler) DeleteClass(ctx *fiber.Ctx) error {
 }
 
 func (h *Handler) GetSingleClass(ctx *fiber.Ctx) error {
+	return nil
+}
+
+func (h *Handler) GetAllUserClasses(ctx *fiber.Ctx) error {
 	return nil
 }
 

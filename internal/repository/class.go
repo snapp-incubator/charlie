@@ -9,6 +9,7 @@ type ClassRepository interface {
 	Create(class *model.Class) error
 	Delete(classID uint) error
 	GetSingle(classID uint) (*model.Class, error)
+	GetAllUserClasses(userID uint) ([]*model.Class, error)
 	GetAll() ([]*model.Class, error)
 	AddUser(userClass relations.UserClass) error
 	RemoveUser(userClass relations.UserClass) error
