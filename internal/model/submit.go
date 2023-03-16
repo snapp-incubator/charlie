@@ -6,7 +6,8 @@ package model
 // each submit has a file that is the combination of ID+UserID.
 type Submit struct {
 	Base
-	UserID    uint   `json:"user_id"`
-	Score     int    `json:"score"`
-	Extension string `json:"extension"`
+	QuestionID uint   `json:"question_id"`
+	UserID     uint   `json:"user_id"`
+	Score      int    `json:"score"`
+	Extension  string `json:"extension"`
 }
