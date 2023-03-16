@@ -10,7 +10,8 @@ import (
 // Role is (Admin, Teacher, or Student)
 type User struct {
 	Base
-	Username string    `json:"username"`
-	Password string    `json:"password"`
-	Role     enum.Role `json:"role"`
+	Username string     `json:"username"`
+	Password string     `json:"password"`
+	Role     enum.Role  `json:"role"`
+	State    enum.State `json:"state"`
 }
