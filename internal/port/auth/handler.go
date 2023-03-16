@@ -2,6 +2,7 @@ package auth
 
 import (
 	"github.com/amirhnajafiz/DJaaS/internal/repository"
+	"github.com/amirhnajafiz/DJaaS/pkg/enum"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -20,4 +21,10 @@ func (h *Handler) Login(ctx *fiber.Ctx) error {
 
 func (h *Handler) Authenticate(ctx *fiber.Ctx) error {
 	return nil
+}
+
+func (h *Handler) CheckRole(role ...enum.Role) fiber.Handler {
+	return func(ctx *fiber.Ctx) error {
+		return nil
+	}
 }
