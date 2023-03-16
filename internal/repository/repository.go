@@ -6,3 +6,7 @@ type Repository struct {
 	Question QuestionRepository
 	Submit   SubmitRepository
 }
+
+func New() *Repository {
+	return &Repository{}
+}
