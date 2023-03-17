@@ -10,11 +10,13 @@ type Handler struct {
 	Repository repository.Repository
 }
 
-func (h *Handler) HandlerRegister() fiber.Router {
-	app := fiber.New().Group("/auth")
+func (h *Handler) HandlerRegister() *fiber.App {
+	app := fiber.New()
 
-	app.Put("/user", h.Register)
-	app.Post("/user", h.Login)
+	auth := app.Group("/auth")
+
+	auth.Put("/user", h.Register)
+	auth.Post("/user", h.Login)
 
 	return app
 }

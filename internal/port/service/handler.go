@@ -10,7 +10,7 @@ type Handler struct {
 	Repository repository.Repository
 }
 
-func (h *Handler) HandlerRegister() fiber.Router {
+func (h *Handler) HandlerRegister() *fiber.App {
 	app := fiber.New()
 
 	common := app.Group("/")

@@ -22,10 +22,12 @@ func (p *Processor) Process() {
 	}
 }
 
-func (p *Processor) RegisterHandler() fiber.Router {
-	app := fiber.New().Group("/processor")
+func (p *Processor) RegisterHandler() *fiber.App {
+	app := fiber.New()
 
-	app.Put("/:submit_id", func(ctx *fiber.Ctx) error {
+	processor := app.Group("/processor")
+
+	processor.Put("/:submit_id", func(ctx *fiber.Ctx) error {
 		id, err := strconv.Atoi(ctx.Params("submit_id"))
 		if err != nil {
 			return fiber.ErrBadRequest
