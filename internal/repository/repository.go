@@ -1,5 +1,9 @@
 package repository
 
+import (
+	"gorm.io/gorm"
+)
+
 type Repository struct {
 	Class    ClassRepository
 	User     UserRepository
@@ -7,6 +11,6 @@ type Repository struct {
 	Submit   SubmitRepository
 }
 
-func New() *Repository {
+func New(db *gorm.DB) *Repository {
 	return &Repository{}
 }
