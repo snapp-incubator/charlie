@@ -7,7 +7,7 @@ import (
 )
 
 type Handler struct {
-	Repository repository.Repository
+	Repository *repository.Repository
 }
 
 func (h *Handler) HandlerRegister() *fiber.App {

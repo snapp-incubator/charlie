@@ -11,7 +11,7 @@ import (
 
 type Processor struct {
 	Channel    chan uint
-	Repository repository.Repository
+	Repository *repository.Repository
 }
 
 func (p *Processor) Process() {
