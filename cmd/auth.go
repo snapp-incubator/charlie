@@ -1,10 +1,16 @@
 package cmd
 
 import (
+	"log"
+
+	"github.com/amirhnajafiz/DJaaS/internal/port/auth"
+
 	"github.com/spf13/cobra"
 )
 
-type Auth struct{}
+type Auth struct {
+	Handler auth.Handler
+}
 
 func (a Auth) Command() *cobra.Command {
 	return &cobra.Command{
@@ -16,4 +22,10 @@ func (a Auth) Command() *cobra.Command {
 	}
 }
 
-func (a Auth) main() {}
+func (a Auth) main() {
+	app := a.Handler.HandlerRegister()
+
+	if err := app.Listen(":8080"); err != nil {
+		log.Println(err)
+	}
+}
