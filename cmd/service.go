@@ -1,10 +1,16 @@
 package cmd
 
 import (
+	"log"
+
+	"github.com/amirhnajafiz/DJaaS/internal/port/service"
+
 	"github.com/spf13/cobra"
 )
 
-type Service struct{}
+type Service struct {
+	Handler service.Handler
+}
 
 func (s Service) Command() *cobra.Command {
 	return &cobra.Command{
@@ -17,5 +23,9 @@ func (s Service) Command() *cobra.Command {
 }
 
 func (s Service) main() {
+	app := s.Handler.HandlerRegister()
 
+	if err := app.Listen(":8080"); err != nil {
+		log.Println(err)
+	}
 }
