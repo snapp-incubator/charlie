@@ -10,12 +10,14 @@ type Handler struct {
 	Repository repository.Repository
 }
 
-func (h *Handler) HandlerRegister() fiber.Router {
-	app := fiber.New().Group("/api")
+func (h *Handler) HandlerRegister() *fiber.App {
+	app := fiber.New()
 
-	app.Post("/submit/:question_id", h.MakeSubmit)
-	app.Get("/submit/:question_id", h.GetQuestionSubmitsOfUser)
-	app.Get("/submit/:question_id/all", h.GetQuestionSubmits)
+	api := app.Group("/api")
+
+	api.Post("/submit/:question_id", h.MakeSubmit)
+	api.Get("/submit/:question_id", h.GetQuestionSubmitsOfUser)
+	api.Get("/submit/:question_id/all", h.GetQuestionSubmits)
 
 	return app
 }

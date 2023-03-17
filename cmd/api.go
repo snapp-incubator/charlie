@@ -1,14 +1,15 @@
 package cmd
 
 import (
-	"github.com/amirhnajafiz/DJaaS/internal/port"
+	"log"
 
-	"github.com/gofiber/fiber/v2"
+	"github.com/amirhnajafiz/DJaaS/internal/port/api"
+
 	"github.com/spf13/cobra"
 )
 
 type API struct {
-	Handlers port.Handler
+	Handler api.Handler
 }
 
 func (a API) Command() *cobra.Command {
@@ -22,11 +23,9 @@ func (a API) Command() *cobra.Command {
 }
 
 func (a API) main() {
-	app := fiber.New()
+	app := a.Handler.HandlerRegister()
 
-	api := app.Group("/api")
-
-	api.Post("/submit", a.Handlers.API.MakeSubmit)
-	api.Get("/submit/:question_id", a.Handlers.API.GetQuestionSubmits)
-	api.Get("/submit/:question_id/user", a.Handlers.API.GetQuestionSubmitsOfUser)
+	if err := app.Listen(":8080"); err != nil {
+		log.Println(err)
+	}
 }
