@@ -10,6 +10,32 @@ type Handler struct {
 	Repository repository.Repository
 }
 
+func (h *Handler) HandlerRegister() fiber.Router {
+	app := fiber.New()
+
+	common := app.Group("/")
+	admin := app.Group("/admin")
+
+	admin.Get("/user", h.GetAllUsers)
+	admin.Patch("/user", h.UpdateUser)
+	admin.Get("/class", h.GetAllClasses)
+	admin.Put("/class/:class_id/user/:user_id", h.AddUserToClass)
+	admin.Delete("/class/:class_id/user/:user_id", h.RemoveUserFromClass)
+	admin.Get("/question", h.GetAllQuestions)
+
+	common.Put("/class", h.CreateClass)
+	common.Delete("/class", h.DeleteClass)
+	common.Get("/class", h.GetAllUserClasses)
+	common.Get("/class/:class_id", h.GetSingleClass)
+	common.Get("/class/:class_id/user", h.GetClassUsers)
+	common.Get("/class/:class_id/question", h.GetClassQuestions)
+	common.Put("/class/:class_id/question", h.CreateQuestion)
+	common.Get("/class/:class_id/question/:question_id", h.GetSingleQuestion)
+	common.Delete("/class/:class_id/question/:question_id", h.RemoveQuestion)
+
+	return app
+}
+
 func (h *Handler) GetAllUsers(ctx *fiber.Ctx) error {
 	return nil
 }
