@@ -10,7 +10,7 @@ func main() {
 	root := cobra.Command{}
 
 	root.AddCommand(
-		cmd.HTTP{}.Command(),
+		cmd.Service{}.Command(),
 		cmd.API{}.Command(),
 		cmd.Auth{}.Command(),
 		cmd.Migrate{}.Command(),
