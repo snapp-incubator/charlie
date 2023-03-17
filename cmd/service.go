@@ -4,18 +4,18 @@ import (
 	"github.com/spf13/cobra"
 )
 
-type HTTP struct{}
+type Service struct{}
 
-func (h HTTP) Command() *cobra.Command {
+func (s Service) Command() *cobra.Command {
 	return &cobra.Command{
 		Use:   "http",
 		Short: "DJaaS http server",
 		Run: func(_ *cobra.Command, _ []string) {
-			h.main()
+			s.main()
 		},
 	}
 }
 
-func (h HTTP) main() {
+func (s Service) main() {
 
 }
