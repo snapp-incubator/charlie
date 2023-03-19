@@ -1,6 +1,12 @@
 package runtime
 
-import "os/exec"
+import (
+	"os/exec"
+)
+
+type Runtime struct {
+	Cfg Config
+}
 
 func Run() {
 	exec.Command("")
