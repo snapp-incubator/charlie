@@ -17,3 +17,7 @@ RUN apt install build-essential checkinstall \
 RUN apt install gcc-12
 
 # python
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt install python3.11
+
+# golang
