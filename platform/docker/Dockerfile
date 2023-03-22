@@ -23,5 +23,12 @@ RUN apt install python3.11
 # golang
 RUN apt install golang-go
 
-# cmd part
-CMD ["tail", "-f", "/dev/null"]
+# set labels
+LABEL app=runtime
+LABEL platform=docker
+
+MAINTAINER amirhossein21
+
+# keeping container alive
+ENTRYPOINT ["tail"]
+CMD ["-f", "/dev/null"]
