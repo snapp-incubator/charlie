@@ -18,6 +18,7 @@ RUN apt install gcc-12
 
 # python
 RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt install python2.7
 RUN apt install python3.11
 
 # golang
