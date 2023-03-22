@@ -2,6 +2,11 @@
     Runtime
 </h1>
 
+<div align="center">
+    <img src="https://img.shields.io/github/v/release/amirhnajafiz/runtime?display_name=tag&style=flat-square" />
+    <img src="https://img.shields.io/badge/target-Docker-blue?style=flat-square" />
+</div>
+
 <br />
 
 This is a runtime for executing you codes 
