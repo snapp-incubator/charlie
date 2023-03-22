@@ -23,6 +23,9 @@ RUN apt install python3.11
 # golang
 RUN apt install golang-go
 
+# node js
+RUN apt install nodejs npm
+
 # set labels
 LABEL app=runtime
 LABEL platform=docker
