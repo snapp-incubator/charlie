@@ -15,14 +15,21 @@ RUN apt install build-essential checkinstall \
     libreadline-gplv2-dev  libncursesw5-dev libssl-dev \
     libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
 
+# install nginx
+RUN apt install nginx \
+    && systemctl enable nginx
+
+# exposing port 80 for nginx
+EXPOSE 80
+
 # install python, golang, gcc
 # gcc
 RUN apt install gcc-12
 
 # python
 RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt install python2.7
-RUN apt install python3.11
+RUN apt install python2.7 \
+    && apt install python3.11
 
 # golang
 RUN apt install golang-go
