@@ -9,15 +9,38 @@
 
 <br />
 
-This is a runtime for executing you codes 
-inside a container. This can be used for
-DOM Judge, Code execution platforms, etc.
+This is a runtime image in order to create
+containers for executing you codes 
+inside it. With this image, you can execute
+your codes inside an isolated environment, which
+gives you an advantage for debugging your codes.
+This image can be used for DOM Judge, 
+Code execution platforms, etc.
 
 ## Docker Image
 
-Docker image ```amirhossein21/runtime:latest```
+Get the latest docker image of runtime ```docker pull amirhossein21/runtime:latest```.
 
-## Programming Languages Support
+### Kubernetes
+
+You can set the runtime on kubernetes by using the same image.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: runtime
+  labels:
+    app: runtime
+spec:
+  containers:
+    - name: runtime
+      image: amirhossein21/runtime:latest
+      ports:
+        - containerPort: 80
+```
+
+### Programming Languages Support
 
 - ```C```
 - ```C++```
