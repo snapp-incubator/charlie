@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* 
 
 # setting the language
 ENV LANG en_US.utf8
+ENV PLS go,python,js,c,cpp
+ENV PLATFORM docker
 
 # install essiantials
 RUN apt install build-essential checkinstall \
@@ -32,6 +34,7 @@ RUN apt install nodejs npm
 LABEL app=runtime
 LABEL platform=docker
 
+# set maintainer
 MAINTAINER amirhossein21
 
 # keeping container alive
