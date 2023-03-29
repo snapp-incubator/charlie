@@ -27,7 +27,6 @@ EXPOSE 80
 RUN apt install gcc-12 -y
 
 # python
-RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt install python2.7 -y \
     && apt install python3.11 -y
 
