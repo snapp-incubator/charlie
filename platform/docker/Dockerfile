@@ -10,9 +10,7 @@ ENV PLS go,python,js,c,cpp
 ENV PLATFORM docker
 
 # install essiantials
-RUN apt install build-essential checkinstall \
-    libncursesw5-dev libssl-dev \
-    libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+RUN apt install build-essential -y
 
 # install nginx
 RUN apt install nginx \
