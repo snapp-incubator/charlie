@@ -1,3 +1,3 @@
 module github.com/amirhnajafiz/runtime/test
 
-go 1.20
+go 1.18

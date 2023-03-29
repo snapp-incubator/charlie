@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	cmd := exec.Command("python", "script.py")
+	cmd := exec.Command("python3", "script.py")
 	cmd.Stdin = strings.NewReader("2")
 
 	var out strings.Builder
