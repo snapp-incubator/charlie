@@ -17,7 +17,7 @@ RUN apt-get install systemd -y
 
 # install nginx
 RUN apt install nginx -y \
-    && systemctl enable nginx -y
+    && systemctl enable nginx
 
 # exposing port 80 for nginx
 EXPOSE 80
