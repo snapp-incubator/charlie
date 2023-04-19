@@ -8,11 +8,17 @@ LABEL app=runtime
 LABEL pyversion=3.10
 
 # set environement variables
-ENV REPOSITORY_PATH=''
-ENV SCRIPT_PATH=''
+ARG REPOSITORY=''
+ARG SCRIPT_PATH=''
+ARG DIRECTORY=''
 
 # create a workdirectory
 WORKDIR src/
+
+# clone into
+RUN git clone $REPOSITORY
+
+WORKDIR $DIRECTORY/$SCRIPT_PATH
 
 # copy the core script file
 COPY core/script.sh script.sh
