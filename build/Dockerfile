@@ -7,6 +7,10 @@ MAINTAINER 'mehditeymorian'
 LABEL app=runtime
 LABEL pyversion=3.10
 
+# set environement variables
+ENV REPOSITORY_PATH=''
+ENV SCRIPT_PATH=''
+
 # create a workdirectory
 WORKDIR src/
 
