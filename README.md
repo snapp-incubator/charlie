@@ -1,8 +1,12 @@
 # Charlie
 
 ![](https://img.shields.io/github/v/release/amirhnajafiz/charlie)
+![](https://img.shields.io/badge/platform-docker-9cf)
+![](https://img.shields.io/badge/language-python-blue)
 
-Runtime for executing python code.
+Runtime for executing python code. You can use this image to execute python scripts on ```okd``` without
+needing any pipeline or anything. Just login with your ```snapp-cloud``` account into the namespace that you want.
+Create an image registery and push this image into it.
 
 ## Requirements
 
