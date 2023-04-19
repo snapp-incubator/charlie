@@ -1,3 +1,0 @@
-variable = input()
-
-print(variable)
