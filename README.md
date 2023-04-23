@@ -53,8 +53,33 @@ docker push <snapp-image-registery>/<namespace>/charlie:v0.1.0
 
 ## :bomb: Run
 
+### :whale: Docker
+
 Use the built image in order to execute your code:
 
 ```shell
 docker run <snapp-image-registery>/charlie@v0.1.0
+```
+
+### :ship: Kubernetes Job
+
+```yml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: charlie
+  labels:
+    app: kubernetes/charlie
+    type: cronjob/charlie
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: charlie-coffin
+            image: <registery>/<namespace>/charlie:v0.1.0
+            imagePullPolicy: IfNotPresent
+          restartPolicy: Never
 ```
