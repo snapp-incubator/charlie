@@ -43,6 +43,14 @@ docker build . --build-arg REPOSITORY='https://gitlab.snapp.ir/snappline/api.git
 - ```DIRECTORY``` name of the directory when it's done cloning. Example: ```api```
 - ```SCRIPT_PATH``` directory of script. Example: ```script/report```
 
+## :pushpin: Push
+
+Push image to your namespace ```image stream```:
+
+```shell
+docker push <snapp-image-registery>/<namespace>/charlie:v0.1.0
+```
+
 ## :bomb: Run
 
 Use the built image in order to execute your code:
