@@ -2,19 +2,23 @@
 
 echo '[OK] cloning into' "$REPOSITORY"
 
-# get current address
-pwd
+cd clone || exit
 
-cd clone || echo '[Failed] mounting' && exit
+echo '[OK] into clone'
+
+# remove if exists
+rm -rf "$DIRECTORY"
 
 # clone into repo
 git clone "$REPOSITORY"
 
+echo '[OK] repo cloned!'
+
 # get into repository in order to run the script
-cd "$DIRECTORY"/"$SCRIPT_PATH" || echo "[Failed] repo not found" && exit
+cd "$DIRECTORY"/"$SCRIPT_PATH" || exit
 
 # install dependencies
-pip install -r requirements.txt || echo '[Failed] install requirements!'
+pip install -r requirements.txt || exit
 
 echo '[OK] install requirements!'
 
