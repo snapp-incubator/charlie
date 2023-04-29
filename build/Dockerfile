@@ -2,9 +2,10 @@
 FROM python:3.10-bullseye
 
 LABEL maintainers='amirhnajafiz,mehditeymorian'
+LABEL company='snapp'
 LABEL team='snappline'
-
-LABEL app=runtime
+LABEL app='charlie'
+LABEL year=2023
 LABEL pyversion=3.10
 LABEL core=bash
 
