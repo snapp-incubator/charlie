@@ -9,18 +9,12 @@ LABEL pyversion=3.10
 LABEL core=bash
 
 # set environement variables
-ARG REPOSITORY=''
-ARG SCRIPT_PATH=''
-ARG DIRECTORY=''
+ENV REPOSITORY=''
+ENV SCRIPT_PATH=''
+ENV DIRECTORY=''
 
 # create a workdirectory
 WORKDIR src/
-
-# clone into
-RUN git clone $REPOSITORY
-
-# enter into project directory
-WORKDIR $DIRECTORY/$SCRIPT_PATH
 
 # copy the core script file
 COPY core/script.sh script.sh
