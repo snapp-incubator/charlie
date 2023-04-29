@@ -16,6 +16,9 @@ ENV DIRECTORY=''
 # create a workdirectory
 WORKDIR src/
 
+# create clone directory
+RUN mkdir clone
+
 # copy the core script file
 COPY core/script.sh script.sh
 
