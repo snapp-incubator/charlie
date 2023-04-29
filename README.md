@@ -17,7 +17,7 @@ In ```snappline``` we use ```charlie``` in order to execute ```python``` scripts
 ## :unlock: Login
 
 ```sh
-docker login -u <okd4-user> -p <okd4-token> <namespace>
+docker login -u <okd4-user> -p <okd4-token> <registery>/<namespace>
 ```
 
 ## :heavy_check_mark: Requirements
