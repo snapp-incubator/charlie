@@ -34,14 +34,8 @@ Also make sure that your ```gitlab/github``` repository is public or accessible 
 First build your image:
 
 ```shell
-docker build . --build-arg REPOSITORY='https://gitlab.snapp.ir/snappline/api.git' --build-arg SCRIPT_PATH='script/report' --build-arg DIRECTORY='api' -t <snapp-image-registery>/<namespace>/charlie:v0.1.0 -f build/Dockerfile
+docker build . -t <snapp-image-registery>/<namespace>/charlie:v0.1.0 -f build/Dockerfile
 ```
-
-### :wrench: Build Arguments
-
-- ```REPOSITORY``` git repository url. Example: ```https://gitlab.snapp.ir/snappline/api.git```
-- ```DIRECTORY``` name of the directory when it's done cloning. Example: ```api```
-- ```SCRIPT_PATH``` directory of script. Example: ```script/report```
 
 ## :pushpin: Push
 
@@ -51,6 +45,12 @@ Push image to your namespace ```image stream```:
 docker push <snapp-image-registery>/<namespace>/charlie:v0.1.0
 ```
 
+## :wrench: Environment Variables
+
+- ```REPOSITORY``` git repository url. Example: ```https://gitlab.snapp.ir/snappline/api.git```
+- ```DIRECTORY``` name of the directory when it's done cloning. Example: ```api```
+- ```SCRIPT_PATH``` directory of script. Example: ```script/report```
+
 ## :bomb: Run
 
 ### :whale: Docker
@@ -58,7 +58,12 @@ docker push <snapp-image-registery>/<namespace>/charlie:v0.1.0
 Use the built image in order to execute your code:
 
 ```shell
-docker run <snapp-image-registery>/charlie@v0.1.0
+docker run \
+--env REPOSITORY='https://github.com/amirhnajafiz/charlie.git' \
+--env DIRECTORY='charlie' \
+--env SCRIPT_PATH='test' \
+--mount type=bind,source="$(pwd)/clone",target=/src/clone \
+<snapp-image-registery>/charlie@v0.1.0
 ```
 
 ### :ship: Kubernetes Job
