@@ -2,7 +2,10 @@
 
 echo '[OK] cloning into' "$REPOSITORY"
 
-cd clone || echo '[Failed] mounting' && ecit
+# get current address
+pwd
+
+cd clone || echo '[Failed] mounting' && exit
 
 # clone into repo
 git clone "$REPOSITORY"
