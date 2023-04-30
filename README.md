@@ -25,7 +25,7 @@ docker login -u <okd4-user> -p <okd4-token> <registery>/<namespace>
 Make sure to have these files:
 
 - ```script.py``` file which contains the main fuction of the script.
-- ```requirements.txt``` project dependencies.
+- ```deps/requirements.txt``` project dependencies when building the image (this will setup your image with requirements that you need).
 
 Also make sure that your ```gitlab/github``` repository is public or accessible from your namespace.
 
