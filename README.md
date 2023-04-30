@@ -6,11 +6,12 @@
 ![](https://img.shields.io/badge/language-bash-success)
 ![](https://img.shields.io/badge/env-okd4-yellow)
 
-Docker image for executing python code from ```gitlab/github``` repository.
-You can use this image to execute python scripts on ```okd``` or any other platform without
-needing any pipeline, dockerfile or anything.
-Just login with your ```snapp-cloud``` account into the namespace that you want.
-Create an image registery, build and push this image into it and use it.
+Docker image for executing python code directly from ```gitlab/github``` repository.
+You can use this image to execute python scripts on ```okd``` or any other cloud
+platform without needing any pipeline, dockerfile or anything.
+All you have to do is build ```charlie``` and then set some ```env``` variable.
+Then login with your ```snapp-cloud``` account into the namespace that you want.
+Create an image registry, build and push this image into it and use it.
 
 In ```snappline``` we use ```charlie``` in order to execute ```python``` scripts as ```crob jobs``` in ```okd4```.
 
@@ -24,10 +25,10 @@ docker login -u <okd4-user> -p <okd4-token> <registery>/<namespace>
 
 Make sure to have these files:
 
-- ```script.py``` file which contains the main fuction of the script.
-- ```deps/requirements.txt``` project dependencies when building the image (this will setup your image with requirements that you need).
-
-Also make sure that your ```gitlab/github``` repository is public or accessible from your namespace.
+- ```script.py``` file which contains the main function of the script.
+- ```libs/requirements.txt``` python project requirements when building the image (this will setup your image with requirements that you need).
+In this file you have to write your external python libraries. Docker image
+will be built from this file.
 
 ## :hammer: Build
 
@@ -47,9 +48,13 @@ docker push <snapp-image-registery>/<namespace>/charlie:v0.1.0
 
 ## :wrench: Environment Variables
 
-- ```REPOSITORY``` git repository url. Example: ```https://gitlab.snapp.ir/snappline/api.git```
+- ```REPOSITORY``` git repository url. Example: ```gitlab.snapp.ir/snappline/api```
 - ```DIRECTORY``` name of the directory when it's done cloning. Example: ```api```
 - ```SCRIPT_PATH``` directory of script. Example: ```script/report```
+- ```HTTP_SECURE``` using ```http``` or ```https```. Expect: ```true/false```
+- ```GIT_SECURE``` if your repository is private set ```true```
+- ```GIT_USER``` repository user for secure option
+- ```GIT_TOKEN``` user token for secure option
 
 ## :bomb: Run
 
@@ -59,7 +64,7 @@ Use the built image in order to execute your code:
 
 ```shell
 docker run \
---env REPOSITORY='https://github.com/amirhnajafiz/charlie.git' \
+--env REPOSITORY='github.com/amirhnajafiz/charlie' \
 --env DIRECTORY='charlie' \
 --env SCRIPT_PATH='test' \
 --mount type=bind,source="$(pwd)/clone",target=/src/clone \
@@ -81,6 +86,10 @@ data:
   REPOSITORY: 'gitlab_repository'
   DIRECTORY: 'export'
   SCRIPT_PATH: 'script'
+  HTTP_SECURE: 'true'
+  GIT_SECURE: 'true'
+  GIT_USER: 'amirhossein.najafizadeh'
+  GIT_TOKEN: 'can be read from secret'
 ```
 
 #### Job
