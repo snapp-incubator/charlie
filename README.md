@@ -25,7 +25,7 @@ docker login -u <okd4-user> -p <okd4-token> <registery>/<namespace>
 Make sure to have these files:
 
 - ```script.py``` file which contains the main fuction of the script.
-- ```requirements.txt``` project dependencies.
+- ```deps/requirements.txt``` project dependencies when building the image (this will setup your image with requirements that you need).
 
 Also make sure that your ```gitlab/github``` repository is public or accessible from your namespace.
 
@@ -68,23 +68,48 @@ docker run \
 
 ### :ship: Kubernetes Job
 
+Example job that executes once in a day to do something.
+
+#### Configmap
+
+```yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: report-configs
+data:
+  REPOSITORY: 'gitlab_repository'
+  DIRECTORY: 'export'
+  SCRIPT_PATH: 'script'
+```
+
+#### Job
+
 ```yml
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: charlie
+  name: report-job
   labels:
-    app: kubernetes/charlie
-    type: cronjob/charlie
+    app.snappcloud.io/created-by: snappline
+    app: report
 spec:
-  schedule: "* * * * *"
+  schedule: "* * */1 * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-          - name: charlie-coffin
-            image: <registery>/<namespace>/charlie:v0.1.0
-            imagePullPolicy: IfNotPresent
+            - name: charlie
+              image: <registery>/<namespace>/charlie:v0.3.0
+              volumeMounts:
+                - mountPath: /src/clone
+                  name: report-dir
+              envFrom:
+                - configMapRef:
+                    name: report-configs
           restartPolicy: Never
+          volumes:
+            - name: report-dir
+              emptyDir: { }
 ```
