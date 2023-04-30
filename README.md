@@ -1,10 +1,11 @@
 # :coin: Charlie
 
 ![](https://img.shields.io/github/v/release/amirhnajafiz/charlie)
-![](https://img.shields.io/badge/platform-docker-9cf)
-![](https://img.shields.io/badge/language-python-blue)
+![](https://img.shields.io/badge/container_runtime-docker-9cf)
+![](https://img.shields.io/badge/stable-true-blue)
+![](https://img.shields.io/badge/test-pass-success)
 ![](https://img.shields.io/badge/language-bash-success)
-![](https://img.shields.io/badge/env-okd4-yellow)
+![](https://img.shields.io/badge/platform-okd4-yellow)
 
 Docker image for executing python code directly from ```gitlab/github``` repository.
 You can use this image to execute python scripts on ```okd``` or any other cloud
@@ -35,7 +36,7 @@ will be built from this file.
 First build your image:
 
 ```shell
-docker build . -t <snapp-image-registery>/<namespace>/charlie:v0.1.0 -f build/Dockerfile
+docker buildx build --platform linux/amd64 . -t <snapp-image-registery>/<namespace>/charlie:v0.1.0 -f build/Dockerfile
 ```
 
 ## :pushpin: Push
