@@ -7,14 +7,7 @@ echo '[OK] into clone'
 
 rm -rf "$DIRECTORY"
 
-git_address=""
-
-if [ "$HTTP_SECURE" == true ]
-then
-  git_address="https://";
-else
-  git_address="http://";
-fi
+git_address=$(if [ "$HTTP_SECURE" == true ]; then echo "https://"; else echo "http://"; fi)
 
 if [ "$GIT_SECURE" == true ]
 then
