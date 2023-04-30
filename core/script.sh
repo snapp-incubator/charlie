@@ -14,7 +14,7 @@ then
   git_address="${git_address}${GIT_USER}:${GIT_TOKEN}@"
 fi
 
-git_address="${git_address}${REPOSITORY}"
+git_address="${git_address}${REPOSITORY}.git"
 
 echo '[OK] cloning into' "$git_address"
 
