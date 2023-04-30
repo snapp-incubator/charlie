@@ -21,4 +21,8 @@
 .DS_Store
 config*
 
+# clone directory
 clone/
+
+# test directory
+test
