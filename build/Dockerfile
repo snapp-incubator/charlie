@@ -2,17 +2,25 @@
 FROM python:3.10-bullseye
 
 LABEL maintainers='amirhnajafiz,mehditeymorian'
-LABEL company='snapp'
-LABEL team='snappline'
-LABEL app='charlie'
+LABEL company='Snapp!'
+LABEL team='Snappline'
+LABEL app='Charlie'
+LABEL platform='gitlab'
 LABEL year=2023
 LABEL pyversion=3.10
 LABEL core=bash
 
 # set environement variables
+# repository is the git repository address
 ENV REPOSITORY=''
+# the path of python script in repository
 ENV SCRIPT_PATH=''
+# directory name of project when it's done clonning
 ENV DIRECTORY=''
+# git security parameters
+ENV GIT_SECURE=false
+ENV GIT_USER=''
+ENV GIT_TOKEN=''
 
 # create a workdirectory
 WORKDIR src/
