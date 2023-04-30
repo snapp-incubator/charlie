@@ -21,7 +21,7 @@ WORKDIR src/
 RUN mkdir clone
 
 # copy requirements
-COPY deps/requirements.txt requirements.txt
+COPY libs/requirements.txt requirements.txt
 
 # install all dependencies
 RUN pip install -r requirements.txt
