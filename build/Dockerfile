@@ -17,6 +17,8 @@ ENV REPOSITORY=''
 ENV SCRIPT_PATH=''
 # directory name of project when it's done clonning
 ENV DIRECTORY=''
+# http/https
+ENV HTTP_SECURE=true
 # git security parameters
 ENV GIT_SECURE=false
 ENV GIT_USER=''
