@@ -17,10 +17,7 @@ echo '[OK] repo cloned!'
 # get into repository in order to run the script
 cd "$DIRECTORY"/"$SCRIPT_PATH" || exit
 
-# install dependencies
-pip install -r requirements.txt || exit
-
-echo '[OK] install requirements!'
+echo '[OK] now running!'
 
 # execute the script
 python script.py

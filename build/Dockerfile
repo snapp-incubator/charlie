@@ -20,6 +20,12 @@ WORKDIR src/
 # create clone directory
 RUN mkdir clone
 
+# copy requirements
+COPY deps/requirements.txt requirements.txt
+
+# install all dependencies
+RUN pip install -r requirements.txt
+
 # copy the core script file
 COPY core/script.sh script.sh
 
